@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CSK Cricket Performance Prediction – Powered by AI, inspired by Thala MS Dhoni. Predict match outcomes, player stats, and more for Chennai Super Kings." />
+  <meta name="keywords" content="CSK, Chennai Super Kings, cricket prediction, MS Dhoni, IPL, performance analytics" />
+  <title>🏏 CSK Predictor – Thala's Cricket Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <div class="logo-icon">🦁</div>
+        <span class="logo-text">CSK<span class="logo-accent">Predict</span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#predictor" class="nav-link">Predictor</a></li>
+        <li><a href="#players" class="nav-link">Players</a></li>
+        <li><a href="#stats" class="nav-link">Stats</a></li>
+        <li><a href="#matches" class="nav-link">Matches</a></li>
+      </ul>
+      <button class="nav-cta" onclick="scrollToSection('predictor')">Predict Now</button>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        AI Powered • IPL 2025
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line1">THALA'S</span>
+        <span class="title-line2">CRICKET<br/><span class="text-yellow">INTELLIGENCE</span></span>
+      </h1>
+      <p class="hero-subtitle">
+        Predict performance like the Captain Cool himself. AI-powered cricket analytics for Chennai Super Kings – built on data, driven by legacy.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="scrollToSection('predictor')">
+          <span>🏏 Start Predicting</span>
+        </button>
+        <button class="btn-secondary" onclick="scrollToSection('stats')">
+          <span>📊 View Stats</span>
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-value">94.7%</span>
+          <span class="stat-label">Accuracy</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <span class="stat-value">5x</span>
+          <span class="stat-label">IPL Titles</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <span class="stat-value">250+</span>
+          <span class="stat-label">Matches Analyzed</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-container">
+      <div class="hero-glow-ring"></div>
+      <div class="hero-player-card">
+        <img src="dhoni.jpg" alt="MS Dhoni CSK Captain" class="hero-player-img" />
+        <div class="player-info-badge">
+          <div class="player-name">MS Dhoni</div>
+          <div class="player-title">Thala • Captain</div>
+          <div class="player-rating">⭐ 10.0</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator" onclick="scrollToSection('predictor')">
+      <div class="scroll-arrow"></div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- CSK Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>🦁 WHISTLE PODU &nbsp;•&nbsp;</span>
+      <span>🏏 CSK – 5x IPL Champions &nbsp;•&nbsp;</span>
+      <span>👑 Thala MS Dhoni – The Captain Cool &nbsp;•&nbsp;</span>
+      <span>📊 AI Prediction Engine LIVE &nbsp;•&nbsp;</span>
+      <span>🌟 Yellow Army Rising &nbsp;•&nbsp;</span>
+      <span>🔥 Yellove Forever &nbsp;•&nbsp;</span>
+      <span>🦁 WHISTLE PODU &nbsp;•&nbsp;</span>
+      <span>🏏 CSK – 5x IPL Champions &nbsp;•&nbsp;</span>
+      <span>👑 Thala MS Dhoni – The Captain Cool &nbsp;•&nbsp;</span>
+      <span>📊 AI Prediction Engine LIVE &nbsp;•&nbsp;</span>
+      <span>🌟 Yellow Army Rising &nbsp;•&nbsp;</span>
+      <span>🔥 Yellove Forever &nbsp;•&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Prediction Engine Section -->
+  <section class="predictor-section" id="predictor">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">🤖 AI Engine</div>
+        <h2 class="section-title">Match <span class="text-yellow">Predictor</span></h2>
+        <p class="section-subtitle">Enter match details and let our AI predict performance outcomes inspired by CSK's winning formula</p>
+      </div>
+
+      <div class="predictor-grid">
+        <!-- Input Panel -->
+        <div class="predictor-card input-panel">
+          <h3 class="card-title">⚙️ Match Configuration</h3>
+
+          <div class="form-group">
+            <label class="form-label">Select Player</label>
+            <select class="form-select" id="playerSelect" onchange="updatePlayerStats()">
+              <option value="dhoni">MS Dhoni (WK)</option>
+              <option value="ruturaj">Ruturaj Gaikwad (BAT)</option>
+              <option value="jadeja">Ravindra Jadeja (ALL)</option>
+              <option value="deepak">Deepak Chahar (BOWL)</option>
+              <option value="moeen">Moeen Ali (ALL)</option>
+              <option value="shivam">Shivam Dube (BAT)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Opponent Team</label>
+            <select class="form-select" id="opponentSelect">
+              <option value="mi">Mumbai Indians</option>
+              <option value="rcb">Royal Challengers Bangalore</option>
+              <option value="dc">Delhi Capitals</option>
+              <option value="kkr">Kolkata Knight Riders</option>
+              <option value="srh">Sunrisers Hyderabad</option>
+              <option value="rr">Rajasthan Royals</option>
+              <option value="pbks">Punjab Kings</option>
+              <option value="gt">Gujarat Titans</option>
+              <option value="lsg">Lucknow Super Giants</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Venue / Ground</label>
+            <select class="form-select" id="venueSelect">
+              <option value="chepauk">MA Chidambaram Stadium, Chennai</option>
+              <option value="wankhede">Wankhede Stadium, Mumbai</option>
+              <option value="eden">Eden Gardens, Kolkata</option>
+              <option value="chinnaswamy">Chinnaswamy, Bangalore</option>
+              <option value="dharamsala">HPCA, Dharamsala</option>
+              <option value="hyderabad">Rajiv Gandhi IS, Hyderabad</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Match Phase</label>
+            <div class="phase-buttons">
+              <button class="phase-btn active" onclick="selectPhase(this, 'powerplay')">Powerplay</button>
+              <button class="phase-btn" onclick="selectPhase(this, 'middle')">Middle Overs</button>
+              <button class="phase-btn" onclick="selectPhase(this, 'death')">Death Overs</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Pitch Conditions</label>
+            <div class="slider-group">
+              <div class="slider-row">
+                <span class="slider-label">Batting Friendly</span>
+                <input type="range" class="form-slider" id="pitchSlider" min="1" max="10" value="7" oninput="updateSliderDisplay(this,'pitchVal')" />
+                <span class="slider-val" id="pitchVal">7</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Dew Factor</label>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="dewYes" onclick="selectToggle('dew','dewYes','dewNo')">YES</button>
+              <button class="toggle-btn" id="dewNo" onclick="selectToggle('dew','dewNo','dewYes')">NO</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Recent Form (Last 5)</label>
+            <div class="form-stars" id="formStars">
+              <span class="form-star active" onclick="setForm(1)">★</span>
+              <span class="form-star active" onclick="setForm(2)">★</span>
+              <span class="form-star active" onclick="setForm(3)">★</span>
+              <span class="form-star active" onclick="setForm(4)">★</span>
+              <span class="form-star" onclick="setForm(5)">★</span>
+            </div>
+          </div>
+
+          <button class="btn-predict" id="predictBtn" onclick="runPrediction()">
+            <span class="btn-predict-icon">🏏</span>
+            <span>Generate AI Prediction</span>
+            <span class="btn-glow"></span>
+          </button>
+        </div>
+
+        <!-- Result Panel -->
+        <div class="predictor-card result-panel" id="resultPanel">
+          <div class="result-placeholder" id="resultPlaceholder">
+            <div class="placeholder-icon">🦁</div>
+            <h3>Ready to Predict</h3>
+            <p>Configure match details and click <strong>"Generate AI Prediction"</strong> to see CSK-powered performance insights</p>
+            <div class="placeholder-whistle">Whistle Podu! 🎺</div>
+          </div>
+
+          <div class="result-content" id="resultContent" style="display:none;">
+            <div class="result-header">
+              <div class="result-player-info">
+                <div class="result-avatar" id="resultAvatar">👑</div>
+                <div>
+                  <div class="result-player-name" id="resultName">MS Dhoni</div>
+                  <div class="result-vs" id="resultVs">vs Mumbai Indians</div>
+                </div>
+              </div>
+              <div class="confidence-badge" id="confidenceBadge">
+                <span>Confidence</span>
+                <span class="conf-value" id="confValue">88%</span>
+              </div>
+            </div>
+
+            <div class="prediction-metrics">
+              <div class="metric-card">
+                <div class="metric-label">Predicted Runs</div>
+                <div class="metric-value" id="predRuns">--</div>
+                <div class="metric-trend" id="runsTrend">↑</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Strike Rate</div>
+                <div class="metric-value" id="predSR">--</div>
+                <div class="metric-trend" id="srTrend">↑</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-label">Boundaries</div>
+                <div class="metric-value" id="predBoundaries">--</div>
+                <div class="metric-trend" id="boundTrend">↑</div>
+              </div>
+            </div>
+
+            <div class="performance-bar-section">
+              <h4>Performance Breakdown</h4>
+              <div class="perf-bars">
+                <div class="perf-bar-item">
+                  <span class="perf-bar-label">Attack Potential</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" id="attackBar" style="width:0%"></div></div>
+                  <span class="perf-bar-pct" id="attackPct">0%</span>
+                </div>
+                <div class="perf-bar-item">
+                  <span class="perf-bar-label">Consistency</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill blue" id="consistBar" style="width:0%"></div></div>
+                  <span class="perf-bar-pct" id="consistPct">0%</span>
+                </div>
+                <div class="perf-bar-item">
+                  <span class="perf-bar-label">Pressure Handling</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill gold" id="pressureBar" style="width:0%"></div></div>
+                  <span class="perf-bar-pct" id="pressurePct">0%</span>
+                </div>
+                <div class="perf-bar-item">
+                  <span class="perf-bar-label">Venue Factor</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill green" id="venueBar" style="width:0%"></div></div>
+                  <span class="perf-bar-pct" id="venuePct">0%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-insight">
+              <div class="insight-icon">🤖</div>
+              <div class="insight-text" id="insightText">
+                Analyzing CSK match patterns...
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="action-btn" onclick="resetPrediction()">🔄 New Prediction</button>
+              <button class="action-btn gold" onclick="sharePrediction()">📤 Share</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CSK Players Section -->
+  <section class="players-section" id="players">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">🦁 Yellow Army</div>
+        <h2 class="section-title">CSK <span class="text-yellow">Squad</span></h2>
+        <p class="section-subtitle">Hover over each player to see their AI performance rating and prediction score</p>
+      </div>
+      <div class="players-grid" id="playersGrid"></div>
+    </div>
+  </section>
+
+  <!-- Live Stats Section -->
+  <section class="stats-section" id="stats">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">📊 Analytics</div>
+        <h2 class="section-title">Season <span class="text-yellow">Statistics</span></h2>
+        <p class="section-subtitle">Real-time analytics and performance tracking for CSK season</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stats-card big-stat">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number counter" data-target="214">0</div>
+          <div class="stat-desc">Total Matches Won</div>
+        </div>
+        <div class="stats-card big-stat">
+          <div class="stat-icon">🏏</div>
+          <div class="stat-number counter" data-target="5429">0</div>
+          <div class="stat-desc">Runs by Dhoni</div>
+        </div>
+        <div class="stats-card big-stat">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-number counter" data-target="135">0</div>
+          <div class="stat-desc">Avg Strike Rate</div>
+        </div>
+        <div class="stats-card big-stat">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-number counter" data-target="94">0</div>
+          <div class="stat-desc">Prediction Accuracy %</div>
+        </div>
+      </div>
+
+      <!-- Chart Area -->
+      <div class="chart-container">
+        <div class="chart-header">
+          <h3>CSK Season Performance Trend</h3>
+          <div class="chart-legend">
+            <span class="legend-dot yellow"></span> Runs Scored
+            <span class="legend-dot blue"></span> Win Rate
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="performanceChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Match History Section -->
+  <section class="matches-section" id="matches">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-badge">📅 History</div>
+        <h2 class="section-title">Recent <span class="text-yellow">Matches</span></h2>
+        <p class="section-subtitle">AI-analyzed match results with performance scores</p>
+      </div>
+      <div class="matches-list" id="matchesList"></div>
+    </div>
+  </section>
+
+  <!-- Dhoni Quote Section -->
+  <section class="quote-section">
+    <div class="quote-bg-img" style="background-image: url('csk_banner.jpg')"></div>
+    <div class="quote-overlay"></div>
+    <div class="quote-content">
+      <div class="quote-icon">❝</div>
+      <blockquote class="dhoni-quote" id="dhoniQuote">
+        "You don't need to be the best in the world, you need to be the best when it matters most."
+      </blockquote>
+      <div class="quote-author">— MS Dhoni, Thala of Chennai</div>
+      <button class="quote-btn" onclick="nextQuote()">Next Quote →</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">🦁</div>
+        <span class="footer-logo-text">CSK<span>Predict</span></span>
+      </div>
+      <p class="footer-tagline">Whistle Podu! Yellove Forever 💛</p>
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#predictor">Predictor</a>
+        <a href="#players">Players</a>
+        <a href="#stats">Stats</a>
+      </div>
+      <p class="footer-copy">© 2025 CSKPredict. Fan-made project. Not officially affiliated with Chennai Super Kings. Thala MS Dhoni 🙏</p>
+    </div>
+  </footer>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+      <div class="loading-logo">🦁</div>
+      <div class="loading-text">Analyzing with Thala's wisdom...</div>
+      <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
